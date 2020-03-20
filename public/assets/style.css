@@ -1,0 +1,48 @@
+body {
+    background-color: rgb(31, 31, 31);
+}
+
+#container {
+    width: 98%;
+    border: 1px solid rgb(121, 121, 121);
+    padding: 10px;
+}
+
+#formContainer {
+}
+
+#textField {
+    width: 85vw ;
+    height: 45px;
+    padding: 0px 30px;
+    font-size: large;
+    outline: none;
+    border: 1.5px solid rgb(121, 121, 121);
+    border-radius: 20px;
+    background-color: transparent;
+}
+input[type="submit"] {
+    width: 90px;
+    height: 50px;
+    color:black;
+    border: 2px solid rgb(121, 121, 121);
+    background-color: rgb(121, 121, 121);
+    border-radius: 20px;
+}
+
+ul {
+    padding:0;
+}
+
+li {
+    border: 1px solid rgb(121, 121, 121);
+    border-radius: 20px;
+    color: white;
+    list-style: none;
+    padding: 10px;
+    margin: 5px 0px;
+}
+
+li:hover {
+    text-decoration: line-through;
+}
