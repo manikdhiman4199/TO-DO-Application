@@ -8,13 +8,6 @@ const todoSchema = new mongoose.Schema({
 });
 
 const Todo = new mongoose.model('Todo', todoSchema);
-
-let testItem = Todo({item: 'buy flowers'}).save((err)=> {
-    if(err) throw err;
-    console.log("Item saved");
-    
-})
-
 module.exports = (app, bodyParser, urlencodedParser, jsonParser) => {
 
     app.get('/', (req, res) => {
