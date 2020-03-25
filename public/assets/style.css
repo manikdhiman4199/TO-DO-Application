@@ -1,22 +1,27 @@
 body {
-    background-color: rgb(31, 31, 31);
+    background-color: rgb(49, 49, 49);
 }
 
 #container {
-    width: 98%;
+    margin: 0 auto;
+    width: 90%;
     border: 1px solid rgb(121, 121, 121);
     padding: 10px;
+    background-color: rgba(223, 223, 223, 0.644);
+    border-radius: 10px;
 }
 
 #formContainer {
 }
 
 #textField {
-    width: 85vw ;
+    ;
+    width: 75vw ;
     height: 45px;
     padding: 0px 30px;
     font-size: large;
     outline: none;
+    color: white;
     border: 1.5px solid rgb(121, 121, 121);
     border-radius: 20px;
     background-color: transparent;
