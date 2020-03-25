@@ -1,23 +1,43 @@
-let data = [{item: 'Get Milk'}, {item: 'Get Chocolate'}];
+//Mongoose Connection
+const mongoose = require('mongoose');
+const con = mongoose.connect('mongodb+srv://todoUser:todoPassword@cluster0-ktdm9.mongodb.net/test?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true } )
+
+//Database Schema 
+const todoSchema = new mongoose.Schema({
+    item: String
+});
+
+const Todo = new mongoose.model('Todo', todoSchema);
+
+let testItem = Todo({item: 'buy flowers'}).save((err)=> {
+    if(err) throw err;
+    console.log("Item saved");
+    
+})
 
 module.exports = (app, bodyParser, urlencodedParser, jsonParser) => {
 
     app.get('/', (req, res) => {
-        res.render('todo', { todoData : data });
+        Todo.find({},(err, data) => {
+            if(err) throw err;
+            res.render('todo', { todoData : data });
+        })
+        
     });
 
     app.post('/todo', urlencodedParser,(req,res) => {
-        data.push(req.body);
-        res.sendStatus(200);
+        const newItem = Todo(req.body).save((err,data) => {
+            if(err) throw err;
+            res.sendStatus(200);
+        })
+        
     });
 
     app.delete('/todo/:item', (req,res) => {
-        data = data.filter((todo) => {
-            console.log(todo.item.replace(/ /g, "-"));res
-            return todo.item.replace(/ /g, "-") !== req.params.item;
+        Todo.find({item : req.params.item.replace(/\-/g, " ")}).remove( (err, data) => {
+            if(err) throw err;
+            res.json(data);
         })
-        console.log(data);
-        res.json(data);
     })
 
 }
