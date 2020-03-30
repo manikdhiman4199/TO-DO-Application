@@ -1,6 +1,6 @@
 //Mongoose Connection
 const mongoose = require('mongoose');
-const con = mongoose.connect('mongodb+srv://todoUser:todoPassword@cluster0-ktdm9.mongodb.net/test?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true } )
+mongoose.connect('mongodb+srv://todoUser:todoPassword@cluster0-ktdm9.mongodb.net/test?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true } )
 
 //Database Schema 
 const todoSchema = new mongoose.Schema({
@@ -15,7 +15,6 @@ module.exports = (app, bodyParser, urlencodedParser, jsonParser) => {
             if(err) throw err;
             res.render('todo', { todoData : data });
         })
-        
     });
 
     app.post('/todo', urlencodedParser,(req,res) => {
@@ -25,9 +24,9 @@ module.exports = (app, bodyParser, urlencodedParser, jsonParser) => {
         })
         
     });
-
+    
     app.delete('/todo/:item', (req,res) => {
-        Todo.find({item : req.params.item.replace(/\-/g, " ")}).remove( (err, data) => {
+        Todo.find({item : req.params.item.replace(/\-/g, " ")}).deleteOne( (err, data) => {
             if(err) throw err;
             res.json(data);
         })

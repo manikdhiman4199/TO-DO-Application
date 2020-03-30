@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#formContainer').submit(function (e) { 
+    $('form').submit(function (e) { 
         let textFieldData = { item : $('#textField').val() };
         console.log(textFieldData);
         e.preventDefault();
@@ -13,7 +13,6 @@ $(document).ready(function () {
     });
     $("li").on('click', function () {
         var item = $(this).text().replace(/ /g, "-");
-        console.log(item);
         console.log("Delete req")
         $.ajax({
             type: "DELETE",

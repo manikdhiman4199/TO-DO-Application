@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TO-DO App</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/e4d042f78e.js" crossorigin="anonymous"></script>
     <script src="/public/assets/todo.js"></script>
     <link rel="stylesheet" href="/public/assets/style.css" type="text/css">
 </head>
 <body>
-    <div id="container">
-        <form action="" id="formContainer" method="">
-            <input type="text" name="textField" id="textField" placeholder="Add something here...">
-            <input type="submit" value="Add Item">
-        </form>
-        <ul id="itemsList">
-            <% for(let x = 0; x < todoData.length; x++ ) { %>
-            <li><%= todoData[x].item %></li>
-            <% } %>
-        </ul>
-    </div>
+    <form action="" method="">
+        <input type="text" name="textField" id="textField" placeholder="Add something here...">
+        <br>
+        <input type="submit" value="+ Add Item">
+    </form>
+    <ul id="itemsList">
+        <span id="nodata">Nothing to show</span>
+        <% for(let x = 0; x < todoData.length; x++ ) { %>
+        <li><%= todoData[x].item %> <i class="far fa-trash-alt"></i></li>
+        <% } %>
+    </ul>
 </body>
+
 </html>
